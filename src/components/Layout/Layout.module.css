@@ -5,3 +5,7 @@
   margin: 0 auto;
   padding: 16px;
 }
+
+body {
+  background-color: rgb(37, 48, 48);
+}
