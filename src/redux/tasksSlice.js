@@ -10,7 +10,11 @@ const tasksInitialState = [
 
 const tasksSlice = createSlice({
   name: 'tasks',
-  initialState: tasksInitialState,
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  }
   reducers: {
     addTask: {
       reducer(state, action) {
