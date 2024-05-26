@@ -10,11 +10,7 @@ const tasksInitialState = [
 
 const tasksSlice = createSlice({
   name: 'tasks',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  }
+  initialState: tasksInitialState,
   reducers: {
     addTask: {
       reducer(state, action) {
@@ -32,9 +28,7 @@ const tasksSlice = createSlice({
     },
     deleteTask(state, action) {
       const index = state.findIndex(task => task.id === action.payload);
-      if (index !== -1) {
-        state.splice(index, 1);
-      }
+      state.splice(index, 1);
     },
     toggleCompleted(state, action) {
       for (const task of state) {
