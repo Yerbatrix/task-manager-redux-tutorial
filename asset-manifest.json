@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/task-manager-redux-tutorial/static/css/main.893b4b0b.css",
-    "main.js": "/task-manager-redux-tutorial/static/js/main.6c6c2973.js",
+    "main.js": "/task-manager-redux-tutorial/static/js/main.a2f8e671.js",
     "index.html": "/task-manager-redux-tutorial/index.html",
     "main.893b4b0b.css.map": "/task-manager-redux-tutorial/static/css/main.893b4b0b.css.map",
-    "main.6c6c2973.js.map": "/task-manager-redux-tutorial/static/js/main.6c6c2973.js.map"
+    "main.a2f8e671.js.map": "/task-manager-redux-tutorial/static/js/main.a2f8e671.js.map"
   },
   "entrypoints": [
     "static/css/main.893b4b0b.css",
-    "static/js/main.6c6c2973.js"
+    "static/js/main.a2f8e671.js"
   ]
 }
