@@ -19,7 +19,7 @@ export const App = () => {
   return (
     <Layout>
       <AppBar />
-      {isLoading && <p>Loading tasks...</p>}
+      {isLoading && !error && <b>Request in progress...</b>}
       {error && <p>{error}</p>}
       <TaskForm />
       <TaskList />
