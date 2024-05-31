@@ -5,13 +5,12 @@ import { TaskList } from 'components/TaskList/TaskList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTasks } from '.././redux/operations';
 import { useEffect } from 'react';
-import { getError, getIsLoading, getTasks } from '.././redux/selectors';
+import { selectError, selectIsLoading } from '.././redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const items = useSelector(getTasks);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
@@ -23,7 +22,6 @@ export const App = () => {
       {error && <p>{error}</p>}
       <TaskForm />
       <TaskList />
-      <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p>
     </Layout>
   );
 };

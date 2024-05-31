@@ -18,6 +18,14 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const isPendingAction = action => {
+  return action.type.endsWith('/pending');
+};
+
+const isRejectAction = action => {
+  return action.type.endsWith('/rejected');
+};
+
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState: {
@@ -25,23 +33,21 @@ const tasksSlice = createSlice({
     isLoading: false,
     error: null,
   },
+
   extraReducers: builder => {
     builder
-      .addCase(fetchTasks.pending, handlePending)
+
+      // Fulfilled cases
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchTasks.rejected, handleRejected)
-      .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
       })
-      .addCase(addTask.rejected, handleRejected)
-      .addCase(deleteTask.pending, handlePending)
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -50,8 +56,6 @@ const tasksSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteTask.rejected, handleRejected)
-      .addCase(toggleCompleted.pending, handlePending)
       .addCase(toggleCompleted.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -60,7 +64,8 @@ const tasksSlice = createSlice({
         );
         state.items[index].completed = !state.items[index].completed;
       })
-      .addCase(toggleCompleted.rejected, handleRejected);
+      .addMatcher(isPendingAction, handlePending)
+      .addMatcher(isRejectAction, handleRejected);
   },
 });
 
